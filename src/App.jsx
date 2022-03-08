@@ -2,45 +2,53 @@ import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-function App({ prop1 }) {
-  const [count, setCount] = useState(0)
-
+function PrimaryButtonText(props) {
+  const { count = 2 } = props;
   return (
-    <div className="App">
-      <header className="App-header">
-        {prop1}
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((c) => c + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+    <span>button 123</span>
+  );
 }
 
-export default App
+function PrimaryButton({ count }) {
+  return (
+    <button
+      type="button"
+      id="btn1"
+      onChange={() => alert('1234')}
+      style={{ width: '100%' }}>
+      <PrimaryButtonText count={count} />
+    </button>
+  );
+}
+
+function getStr() {
+  return 'string123';
+}
+
+export default function App() {
+  const str = 'string';
+
+  const items = [1, 2, 3, 4];
+
+  const spans = items.map((item) => (
+    <>
+      <span>{`${item} postfix`}</span>
+      <br />
+    </>
+  ));
+
+  return (
+    <>
+      {[...Array(4)].map((_, index) => (
+        <PrimaryButton count={index + 1} />
+      ))}
+      <p />
+      {`asd${str}`}
+      {str === '123' ? 'sasdas' : 'adsads'};
+      <p />
+      {str === '123' ? getStr() : 'adsads'};
+      {spans}
+      hello react
+    </>
+  );
+}
