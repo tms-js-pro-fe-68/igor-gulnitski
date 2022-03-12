@@ -1,54 +1,26 @@
-import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import ColorButton from './components/ColorButton';
+import CountButton from './components/CountButton';
 
-function PrimaryButtonText(props) {
-  const { count = 2 } = props;
+
+
+function App({ prop1 }) {
   return (
-    <span>button 123</span>
-  );
+    <div className="App">
+      <header className="App-header">
+        {prop1}
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Hello
+        </p>
+        <p>
+          <CountButton />
+          <ColorButton />
+        </p>
+      </header>
+    </div>
+  )
 }
 
-function PrimaryButton({ count }) {
-  return (
-    <button
-      type="button"
-      id="btn1"
-      onChange={() => alert('1234')}
-      style={{ width: '100%' }}>
-      <PrimaryButtonText count={count} />
-    </button>
-  );
-}
-
-function getStr() {
-  return 'string123';
-}
-
-export default function App() {
-  const str = 'string';
-
-  const items = [1, 2, 3, 4];
-
-  const spans = items.map((item) => (
-    <>
-      <span>{`${item} postfix`}</span>
-      <br />
-    </>
-  ));
-
-  return (
-    <>
-      {[...Array(4)].map((_, index) => (
-        <PrimaryButton count={index + 1} />
-      ))}
-      <p />
-      {`asd${str}`}
-      {str === '123' ? 'sasdas' : 'adsads'};
-      <p />
-      {str === '123' ? getStr() : 'adsads'};
-      {spans}
-      hello react
-    </>
-  );
-}
+export default App
