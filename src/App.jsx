@@ -1,26 +1,20 @@
 import logo from './logo.svg'
 import './App.css'
 import ColorButton from './components/ColorButton';
-import CountButton from './components/CountButton';
+import CatFact from './components/CatFact';
 
 
-
-function App({ prop1 }) {
+function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {prop1}
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello
-        </p>
-        <p>
-          <CountButton />
-          <ColorButton />
-        </p>
+        {/* {prop1}
+        <img src={logo} className="App-logo" alt="logo" /> */}
+        <CatFact />
+        <ColorButton />
       </header>
     </div>
   )
 }
 
-export default App
+export default App;
