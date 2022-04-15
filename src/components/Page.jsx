@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../api";
 
 
 export default function Page({ sx, ...otherProps }) {
@@ -10,7 +11,12 @@ export default function Page({ sx, ...otherProps }) {
     const navigateToLogin = () => navigate('/login', { replace: true });
 
     useEffect(() => {
-        if (!sessionStorage.token) navigateToLogin()
+        if (sessionStorage.token) {
+            api.setup(sessionStorage.token)
+        }
+        else {
+            navigateToLogin()
+        }
     }, []);
 
 
