@@ -62,7 +62,7 @@ export default function HomePage() {
             <AddTodoItemButton onAfterSubmit={loadTodos} />
             <div className="App">
                 <header className="App-header">
-                    {/* {prop1} */}
+
                     <img src={logo} className="App-logo" alt="logo" />
                     <ButtonPassword />
                     <CatFact />

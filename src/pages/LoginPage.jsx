@@ -31,7 +31,7 @@ export default function LoginPage() {
                 navigate('/', { replace: true });
                 setSubmitting(false);
             })
-        // .cath((err) => setErrors([err.message]));
+
     };
 
     const formik = useFormik({
