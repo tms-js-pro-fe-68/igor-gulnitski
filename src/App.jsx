@@ -1,23 +1,19 @@
-import logo from './logo.svg'
-import './App.css'
-import ColorButton from './components/ColorButton';
-import CatFact from './components/CatFact';
-import Back from './components/Back';
-import ButtonPassword from './components/ButtonPassword';
 
-function App() {
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
+
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* {prop1} */}
-        <img src={logo} className="App-logo" alt="logo" />
-        <ButtonPassword />
-        <CatFact />
-        <ColorButton />
-        <Back />
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/' element={<HomePage />} exact />
+      </Routes>
+    </Router>
   )
 }
 
-export default App;
+
+
