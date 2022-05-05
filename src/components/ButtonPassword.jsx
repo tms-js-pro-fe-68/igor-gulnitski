@@ -5,7 +5,7 @@ export default function ButtonPassword() {
         <div>
             <button
                 style={{
-                    // background: color,
+                    color: 'red',
                     margin: '10px',
                     padding: '30px',
                     borderRadius: '70px',
