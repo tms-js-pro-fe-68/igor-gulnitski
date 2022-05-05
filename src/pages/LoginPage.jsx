@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/jsx-no-undef */
-import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-import { object, string } from "yup";
-import TextField from "../components/TextField";
+import { Button, Paper, TextField, Typography } from '@mui/material';
+import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { object, string } from 'yup';
+import Page from '../components/Page';
 
 
 export default function LoginPage() {
@@ -31,7 +31,7 @@ export default function LoginPage() {
                 navigate('/', { replace: true });
                 setSubmitting(false);
             })
-        // .cath((err) => setErrors([err.message]));
+
     };
 
     const formik = useFormik({
@@ -48,9 +48,10 @@ export default function LoginPage() {
     });
 
     return (
-
-        <div
-            style={{
+        <Page
+            sx={{
+                background: 'gray',
+                backgroundColor: 'rgba(190, 150, 150, 0.5)',
                 height: '100vh',
                 width: '100vw',
                 display: 'flex',
@@ -58,13 +59,21 @@ export default function LoginPage() {
                 justifyContent: 'center',
             }}
         >
-            <form style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr',
-                gap: 16,
-            }}
+
+            <Paper component='form'
+                sx={{
+                    background: 'gray',
+                    backgroundColor: 'rgba(190, 150, 150, 0.5)',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr',
+                    gap: 6,
+                    p: 6,
+                    width: '300px'
+                }}
+                elevation={20}
                 onSubmit={formik.handleSubmit}
             >
+                <Typography variant='h5'>Please sign in</Typography>
                 <TextField
                     label='Email Address'
                     id="email"
@@ -86,9 +95,14 @@ export default function LoginPage() {
                     value={formik.values.password}
                     error={formik.touched.password && !!formik.errors.password && formik.errors.password}
                 />
-                {/* <label htmlFor="email">Password</label> */}
-                <button type="submit" disabled={!formik.isValid && !formik.isSubmitting}>sign in</button>
-            </form>
-        </div>
+                <Button
+                    type="submit"
+                    variant='contained'
+                    color='primary'
+                    disabled={!formik.isValid && !formik.isSubmitting}>
+                    sign in
+                </Button>
+            </Paper>
+        </Page>
     );
 }

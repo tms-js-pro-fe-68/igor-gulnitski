@@ -56,7 +56,7 @@ function MyRadio({ label, ...props }) {
 
 export default function FormTest() {
     return (
-        <div>
+        <div style={{ width: '800px', margin: '5px auto', border: '3px solid green' }}>
             <h1>
                 Add your product <br /> so that millions of people can buy it!
             </h1>
@@ -86,7 +86,7 @@ export default function FormTest() {
                             gridTemplateColumns: '1fr',
                             gap: 16,
                             width: 500,
-                            height: 30
+                            height: 30,
                         }}
                             label="Product Name:"
                             name="name"
@@ -169,15 +169,15 @@ export default function FormTest() {
                             I accept the terms and conditions
                         </MyCheckbox>
 
-                        <MyCheckbox name="acceptedTerms">
+                        <MyCheckbox name="acceptedTerms1">
                             I accept the terms and conditions
                         </MyCheckbox>
 
-                        <MyRadio name="html" label="radio 1" value="html1" />
-                        <MyRadio name="html" label="radio 2" value="html2" />
+                        <MyRadio name="html1" label="radio 1" value="html1" />
+                        <MyRadio name="html2" label="radio 2" value="html2" />
 
-                        <MyRadio name="html2" label="radio 3" />
-                        <MyRadio name="html2" label="radio 4" />
+                        <MyRadio name="html3" label="radio 3" value="html3" />
+                        <MyRadio name="html4" label="radio 4" value="html4" />
 
                         <button type="submit">Submit</button>
                     </div>

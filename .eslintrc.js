@@ -6,7 +6,8 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
-    'prettier'
+    'prettier',
+    'plugin:react-hooks/recommended'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -21,5 +22,6 @@ module.exports = {
   rules: {
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
+    'react/jsx-props-no-spreading': 0,
   },
 };
