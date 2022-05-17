@@ -3,6 +3,7 @@ import { Button, Paper, TextField, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
+import api from '../api';
 import Page from '../components/Page';
 
 
@@ -28,6 +29,7 @@ export default function LoginPage() {
             })
             .then((data) => {
                 sessionStorage.token = data.token;
+                api.setup(data.token)
                 navigate('/', { replace: true });
                 setSubmitting(false);
             })
