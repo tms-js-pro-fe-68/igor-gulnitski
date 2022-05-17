@@ -15,7 +15,7 @@ import '../App.css'
 
 
 
-export default function AppBar() {
+export default function AppBar({ tittle }) {
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -35,7 +35,7 @@ export default function AppBar() {
             <MuiAppBar position="fixed">
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Home Page
+                        {tittle}
                     </Typography>
                     <Box>
                         <IconButton

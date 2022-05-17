@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { Button, Paper, TextField, Typography } from '@mui/material';
+import { Button, Paper, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { object, string } from 'yup';
 import api from '../api';
+import TextFieldFormik from '../components/FormikTextField';
 import Page from '../components/Page';
 
 
@@ -12,6 +13,8 @@ export default function LoginPage() {
     const handleSubmit = (values, { setSubmitting }) => {
 
         const { email, password } = values;
+
+
         fetch('https://tms-js-pro-back-end.herokuapp.com/api/users/signin', {
             method: 'POST',
             headers: {
@@ -44,10 +47,12 @@ export default function LoginPage() {
         onSubmit: handleSubmit,
         validationSchema: object().shape({
             email: string().required(),
-            password: string().required(),
+            password: string().min(2).required(),
         }),
         validateOnMount: true,
     });
+
+
 
     return (
         <Page
@@ -76,26 +81,18 @@ export default function LoginPage() {
                 onSubmit={formik.handleSubmit}
             >
                 <Typography variant='h5'>Please sign in</Typography>
-                <TextField
+                <TextFieldFormik
                     label='Email Address'
-                    id="email"
                     name="email"
                     type="email"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.email}
-                    error={formik.touched.email && !!formik.errors.email && formik.errors.email}
+                    formik={formik}
                 />
 
-                <TextField
+                <TextFieldFormik
                     label="Password"
-                    id="password"
                     name="password"
                     type="password"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.password}
-                    error={formik.touched.password && !!formik.errors.password && formik.errors.password}
+                    formik={formik}
                 />
                 <Button
                     type="submit"

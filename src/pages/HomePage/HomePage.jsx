@@ -1,6 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Search as SearchIcon } from '@mui/icons-material';
-import { Box, Button, InputAdornment, Stack, TextField } from '@mui/material';
 import { debounce } from 'lodash';
 import '../../App.css'
 import ColorButton from '../../components/ColorButton';
@@ -15,6 +13,10 @@ import AddTodoItemButton from './AddTodoItemButton';
 import TodoList from './TodoList';
 import api from '../../api';
 import StylesComponents from '../../components/StylesComponents';
+import HomePageListActions from './HomePageListActions';
+import PagesIndex from './PagesIndex';
+import CustomHookQuery from '../../components/CustomHookQuery';
+import HomePageContextProvider from '../../components/HomePageContext';
 
 
 
@@ -48,46 +50,27 @@ export default function HomePage() {
 
 
     return (
-        <Page>
-            <AppBar />
-            <Box sx={{ p: 2, display: 'grid', gap: 2, gridTemplateColumns: '4fr 2fr' }}>
-                <TextField
-                    inputProps={{
-                        startAdorment: (
-                            <InputAdornment position="start">
-                                <SearchIcon />
-                            </InputAdornment>
-                        ),
-                    }}
-                    value={search} onChange={e => setSaarch(e.target.value)} />
-                <Button onClick={() => setSort(prevSort => prevSort === 'asc' ? 'desc' : 'asc')}>
-                    {sort}
-                </Button>
-            </Box>
-            <TodoList {...{ todos, loadTodos }} />
-            <Stack direction='row' sx={{ justifyContent: 'center', width: 1, p: 2 }}>
-                <Stack direction='row' spacing={1}>
-                    {[1, 2, 3, 4, 5].map((p) => <Button key={p} variant={p === page ? 'contained' : 'outlined'}
-                        onClick={() => setPage(p)}
-                    >
-                        {p}
-                    </Button>
-                    )}
-                </Stack>
-            </Stack>
-            <AddTodoItemButton onAfterSubmit={loadTodos} />
-            <div className="App">
-                <header className="App-header">
-                    {/* {prop1} */}
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <ButtonPassword />
-                    <CatFact />
-                    <ColorButton />
-                    <FormTest />
-                    <CustomHooks />
-                    <StylesComponents />
-                </header>
-            </div>
-        </Page>
+        <HomePageContextProvider>
+            <Page>
+                <AppBar tittle='Home Page1' />
+                <HomePageListActions {...{ search, setSort, sort, setSaarch }} />
+                <TodoList {...{ todos, loadTodos }} />
+                <PagesIndex {...{ page, setPage }} />
+                <AddTodoItemButton onAfterSubmit={loadTodos} />
+                <div className="App">
+                    <header className="App-header">
+                        {/* {prop1} */}
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <ButtonPassword />
+                        <CatFact />
+                        <ColorButton />
+                        <FormTest />
+                        <CustomHooks />
+                        <StylesComponents />
+                        <CustomHookQuery />
+                    </header>
+                </div>
+            </Page>
+        </HomePageContextProvider>
     )
 }
